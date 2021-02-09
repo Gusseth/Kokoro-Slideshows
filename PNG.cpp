@@ -26,7 +26,9 @@ namespace PNGUtil {
 
     bool PNG::ReadFile(fs::path path)
     {
-        vector<unsigned char> byteData(_width * _height * 4);   // skip stl copy for every expand bs
+        delete[] image;
+
+        vector<unsigned char> byteData;
         unsigned error = lodepng::decode(byteData, _width, _height, path.string());
 
         if (error) {
@@ -34,7 +36,6 @@ namespace PNGUtil {
             return false;
         }
 
-        delete[] image;
         image = new unsigned[_width * _height];
 
         for (unsigned i = 0; i < byteData.size(); i += 4) {
