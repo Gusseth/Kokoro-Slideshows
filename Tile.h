@@ -2,6 +2,7 @@
 #include "PNG.h"
 #include <map>
 #include <filesystem>
+
 namespace fs = std::filesystem;
 using namespace std;
 using namespace PNGUtil;
@@ -13,7 +14,7 @@ namespace Tiler {
 		PNG& AverageTiler(PNG& target);
 		PNG& ExpandTiler(PNG& target);
 
-		void BuildTile(fs::path path);
+		void BuildTile(fs::path path, unsigned tileSize);
 	private:
 		map<unsigned, PNG>* tilemap;
 	};
