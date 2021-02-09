@@ -22,7 +22,7 @@ namespace Tiler {
     void RGBATree::constructTree(unsigned start, unsigned end, unsigned char d) {
         // Sort tree by median, this is essentially quicksort.
         if (start < end) {
-            d = d % 4;
+            d = d % 3;  // % 4 = also consider by alpha value
             int p = (start + end) / 2;
             quickSelect(start, end, p, d);
             d++;
@@ -51,15 +51,10 @@ namespace Tiler {
 
             // Signed distance between the query and the root.
             // distSplit > 0 
-            int distSplit = distToSplit(query, curr, dimension);
+            unsigned distSplit = distToSplit(query, curr, dimension);
 
             // Get the nodes in the same side as the query relative to the root in the 'dimension' dimension
-            if (distSplit < 0)
-                // Query is in the right side of the root
-                inMin = traverseNearestNeighbor(query, p + 1, end, dimension + 1);
-            else
-                // Query is in the left side of the root
-                inMin = traverseNearestNeighbor(query, start, p, dimension + 1);
+            inMin = traverseNearestNeighbor(query, start, p, dimension + 1);
 
             // Chooses what is closer, the best in the same-side node or the root?
             best = closestPoint(query, inMin, curr);
@@ -68,13 +63,9 @@ namespace Tiler {
             unsigned dist = distToPoint(query, best);
 
             // If the absolute distance between the query and the root is smaller than the best distance,
-            if (abs(distSplit) < dist) {
-                unsigned outMin;
+            if (distSplit < dist) {
                 // Probe for the nodes that are at the other side of the root
-                if (distSplit >= 0)
-                    outMin = traverseNearestNeighbor(query, p + 1, end, dimension + 1);
-                else
-                    outMin = traverseNearestNeighbor(query, start, p, dimension + 1);
+                unsigned outMin = traverseNearestNeighbor(query, p + 1, end, dimension + 1);
 
                 // Choose what is closer, the best node on the other side or the root/same-side
                 best = closestPoint(query, outMin, best);
@@ -152,7 +143,7 @@ namespace Tiler {
         unsigned r = distToSplit(query, curr, 0);
         unsigned g = distToSplit(query, curr, 1);
         unsigned b = distToSplit(query, curr, 2);
-        unsigned a = distToSplit(query, curr, 3);
-        return r + g + b + a;
+        //unsigned a = distToSplit(query, curr, 3);
+        return r + g + b; //+ a;
     }
 }
