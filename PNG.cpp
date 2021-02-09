@@ -83,7 +83,6 @@ namespace PNGUtil {
     bool PNG::operator==(const PNG& other) const {
         if (_width + _height != other._width + other._height) { return false; }
 
-        bool flag = true;
         for (unsigned i = 0; i < _width * _height; i++) {
             unsigned& p1 = image[i];
             unsigned& p2 = other.image[i];
