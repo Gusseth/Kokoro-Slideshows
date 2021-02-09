@@ -12,7 +12,7 @@ Performance is a goal for this project, so this will also be the pilot program o
 - [Bad Apple](https://www.youtube.com/watch?v=dgY6d-0OFho) (This uses an older version of the algorithm.)
 
 ## User Stories
-The following list would be the main goals for Kokoro Slideshow:
+The following list would be the main goals for Kokoro Slideshows:
 - As a user, I should be able to load an image and generate a mosaic that maps every pixel into a tile of various size
 - As a user, I should be able to load an image and generate a mosaic that subdivides the image into tiles instead of expanding it.
 - As a user, I should be able to import a video with sound and expect an exported, mosaic'd video with sound.
