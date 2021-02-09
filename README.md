@@ -1,11 +1,11 @@
 <img src="https://github.com/Gusseth/Kokoro-Slideshows/blob/master/images/banner.png?raw=true">
 <br>
 
-# Kokoro Slideshow - A Noh Performance of Tiles.
+# Kokoro Slideshows - A Noh Performance of Tiles.
 
 ## An Overview
 *Kokoro Slideshow* is a small program that uses [nearest neighbour search](https://en.wikipedia.org/wiki/Nearest_neighbor_search) to approximate pixels into tiles.
-This is done through the usage of [k-d trees](https://en.wikipedia.org/wiki/K-d_tree) and a pseudo-quicksort algorithm to perform a search.
+This is done through the usage of [k-d trees](https://en.wikipedia.org/wiki/K-d_tree) and [quickselect](https://en.wikipedia.org/wiki/Quickselect) algorithm to perform a search.
 Performance is a goal for this project, so this will also be the pilot program of the soon-to-be public Shameimaru Project.
 
 ## Examples 
