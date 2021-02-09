@@ -51,7 +51,18 @@ namespace PNGUtil {
 		/// <returns>Pointer to pixel (x,y).</returns>
 		unsigned* GetPixel(unsigned x, unsigned y);
 
+		/// <summary>
+		/// Reads a .png file into memory.
+		/// </summary>
+		/// <param name="path">Path to file including file name.</param>
+		/// <returns>True if successful.</returns>
 		bool ReadFile(fs::path path);
+
+		/// <summary>
+		/// Writes this image into a .png file.
+		/// </summary>
+		/// <param name="path">Path to file including file name.</param>
+		/// <returns>True if successful.</returns>
 		bool WriteFile(fs::path path);
 
 		void operator=(const PNG& other);
