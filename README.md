@@ -1,4 +1,4 @@
-<img src="https://github.com/Gusseth/Kokoro-Slideshows/blob/main/images/banner.png?raw=true">
+<img src="https://github.com/Gusseth/Kokoro-Slideshows/blob/master/images/banner.png?raw=true">
 <br>
 
 # Kokoro Slideshow - A Noh Performance of Tiles.
