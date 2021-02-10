@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="PNG.cpp" />
     <ClCompile Include="RGBATree.cpp" />
     <ClCompile Include="Tile.cpp" />

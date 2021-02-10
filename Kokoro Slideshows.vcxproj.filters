@@ -33,6 +33,9 @@
     <ClCompile Include="util\lodepng\lodepng.cpp">
       <Filter>Source Files\lodepng</Filter>
     </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PNG.h">

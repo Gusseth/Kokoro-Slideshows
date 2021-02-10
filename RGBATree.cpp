@@ -8,15 +8,10 @@
 #include "RGBATree.h"
 
 using namespace std;
-namespace Tiler {
+namespace TilerUtils {
     RGBATree::RGBATree(const map<unsigned, PNG>& photos)
     {
-        // Jam everything into the tree first
-        tree.resize(photos.size());
-        tree.assign(photos.begin(), photos.end());
-
-        // Then arrange the array so that it follows the tree structure
-        constructTree(0, photos.size() - 1, 0);
+        Rebuild(photos);
     }
 
     void RGBATree::constructTree(unsigned start, unsigned end, unsigned char d) {
@@ -31,10 +26,25 @@ namespace Tiler {
         }
     }
 
+
     unsigned RGBATree::FindNearestNeighbor(const unsigned& query) const
     {
         /* your code here! */
         return traverseNearestNeighbor(query, 0, tree.size() - 1, 0);
+    }
+
+    void RGBATree::Rebuild(const map<unsigned, PNG>& photos)
+    {
+        tree.clear();
+
+        // Jam everything into the tree first
+        tree.resize(photos.size());
+        for (const pair<unsigned, PNG>& entry : photos) {
+            tree.push_back(entry.first);
+        }
+
+        // Then arrange the array so that it follows the tree structure
+        constructTree(0, photos.size() - 1, 0);
     }
 
     unsigned RGBATree::traverseNearestNeighbor(const unsigned& query, int start, int end, unsigned char dimension) const {

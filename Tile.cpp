@@ -1,17 +1,22 @@
 #include "Tile.h"
 
-PNG& Tiler::Tiler::AverageTiler(PNG& target)
-{
-    PNG newImage(target.Width(), target.Height());
-    return newImage;
-}
+namespace TilerUtils {
+    PNG& Tiler::AverageTiler(PNG& target)
+    {
+        return target;
+    }
 
-void Tiler::Tiler::BuildTile(fs::path path, unsigned tileSize)
-{
-    delete[] tilemap;
-    tilemap = new map<unsigned, PNG>();
-    for (const auto& tileFile : fs::directory_iterator(path)) {
-        PNG tile(tileFile);
-        tilemap->insert({ GetAveragePixel(tile), tile });
+    map<unsigned, PNG> Tiler::BuildTile(fs::path path, unsigned tileSize)
+    {
+        map<unsigned, PNG> tilemap;
+        for (const auto& tileFile : fs::directory_iterator(path)) {
+            PNG t;
+            t.ReadFile(tileFile.path());
+            unsigned pixel = GetAveragePixel(t, tileSize);
+            tilemap.insert({ 1,t });
+        }
+
+        //tree.Rebuild(tilemap);
+        return tilemap;
     }
 }
