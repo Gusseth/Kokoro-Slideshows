@@ -14,7 +14,7 @@ namespace PNGUtil {
 		/// <summary>
 		/// Creates an empty PNG file with nothing.
 		/// </summary>
-		PNG() {}
+		PNG() { _width = 0; _height = 0; image = NULL; }
 
 		/// <summary>
 		/// Creates a PNG with specified width and height.
@@ -93,12 +93,7 @@ namespace PNGUtil {
 	/// <param name="b">Blue dimension</param>
 	/// <param name="a">Alpha dimension (Default: 255)</param>
 	/// <returns>Unsigned integer of all bytes combined in big endian.</returns>
-	unsigned CharToInt(unsigned char r, unsigned char g, unsigned char b, unsigned char a = 0xFF) {
-		return	r << 24		// r
-				| g << 16   // g
-				| b << 8    // b
-				| a;        // a
-	}
+	unsigned CharToInt(unsigned char r, unsigned char g, unsigned char b, unsigned char a = 0xFF);
 
 	/// <summary>
 	/// Returns the d-th byte in integer. Starts at 0. Big endian.
@@ -106,37 +101,14 @@ namespace PNGUtil {
 	/// <param name="integer">Master unsigned integer</param>
 	/// <param name="d">Dimension of the byte</param>
 	/// <returns>The d-th byte of the integer.</returns>
-	unsigned char IntToChar(unsigned& integer, unsigned char d) {
-		switch (d)
-		{
-		case 0:	// r
-			return integer >> 24;
-		case 1:	// g
-			return integer & 0x00FF0000 >> 16;
-		case 2:	// b
-			return integer & 0x0000FF00 >> 8;
-		default:// a
-			return integer & 0x000000FF;
-		}
-	}
+	unsigned char IntToChar(unsigned integer, unsigned char d);
 
 	/// <summary>
 	/// Returns the average pixel of an entire image file.
 	/// </summary>
 	/// <param name="image">The master image.</param>
 	/// <returns>A pixel.</returns>
-	unsigned GetAveragePixel(PNG& image) {
-		unsigned r(0), g(0), b(0), a(0), pixels(image.Width() * image.Height());
-		for (unsigned x = 0; x < image.Width(); x++)
-			for (unsigned y = 0; y < image.Height(); y++) {
-				unsigned* pixel = image.GetPixel(x, y);
-				r += IntToChar(*pixel, 0);
-				g += IntToChar(*pixel, 1);
-				b += IntToChar(*pixel, 2);
-				a += IntToChar(*pixel, 3);
-			}
-		return CharToInt(r / pixels, g / pixels, b / pixels, a / pixels);
-	}
+	unsigned GetAveragePixel(PNG& image);
 
 	/// <summary>
 	/// Returns the average pixel of region [x, x + tileSize), [y, ,y + tileSize) under trivial conditions.
@@ -148,24 +120,6 @@ namespace PNGUtil {
 	/// <param name="x">x-position of the top-left pixel of the region.</param>
 	/// <param name="y">y-position of the top-left pixel of the region.</param>
 	/// <returns>A pixel.</returns>
-	unsigned GetAveragePixel(PNG& image, unsigned tileSize, unsigned xPos = 0, unsigned yPos = 0) {
-		unsigned r(0), g(0), b(0), a(0), width(xPos + tileSize), height(yPos + tileSize);
-
-		if (width >= image.Width()) width = image.Width() - xPos;		// Overflow: only process the pixels [x, width)
-		if (height >= image.Height()) height = image.Height() - yPos;	// Overflow: only process the pixels [y, height)
-
-		unsigned pixels = width * height;	// Total number of pixels in the assigned region
-
-		for (unsigned x = xPos; x < width; x++) {
-			for (unsigned y = yPos; y < height; y++) {
-				unsigned* pixel = image.GetPixel(x, y);
-				r += IntToChar(*pixel, 0);
-				g += IntToChar(*pixel, 1);
-				b += IntToChar(*pixel, 2);
-				a += IntToChar(*pixel, 3);
-			}
-		}
-		return CharToInt(r / pixels, g / pixels, b / pixels, a / pixels);
-	}
+	unsigned GetAveragePixel(PNG& image, unsigned tileSize, unsigned xPos = 0, unsigned yPos = 0);
 }
 
