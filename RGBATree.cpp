@@ -11,10 +11,17 @@ using namespace std;
 namespace TilerUtils {
     RGBATree::RGBATree(const map<unsigned, PNG>& photos)
     {
-        Rebuild(photos);
+        tree.clear();
+        tree.reserve(photos.size());
+        for (pair<unsigned, PNG> pair : photos) {
+            tree.push_back(pair.first);
+        }
+
+        // Then arrange the array so that it follows the tree structure
+        constructTree(0, tree.size() - 1, 0);
     }
 
-    void RGBATree::constructTree(unsigned start, unsigned end, unsigned char d) {
+    void RGBATree::constructTree(int start, int end, unsigned char d) {
         // Sort tree by median, this is essentially quicksort.
         if (start < end) {
             d = d % 3;  // % 4 = also consider by alpha value
@@ -33,23 +40,9 @@ namespace TilerUtils {
         return traverseNearestNeighbor(query, 0, tree.size() - 1, 0);
     }
 
-    void RGBATree::Rebuild(const map<unsigned, PNG>& photos)
-    {
-        tree.clear();
-
-        // Jam everything into the tree first
-        tree.resize(photos.size());
-        for (const pair<unsigned, PNG>& entry : photos) {
-            tree.push_back(entry.first);
-        }
-
-        // Then arrange the array so that it follows the tree structure
-        constructTree(0, photos.size() - 1, 0);
-    }
-
     unsigned RGBATree::traverseNearestNeighbor(const unsigned& query, int start, int end, unsigned char dimension) const {
         if (start < end) {
-            dimension = dimension % 4;
+            dimension = dimension % 3;
 
             // Tree structure: root is the middle of the segment
             int p = (start + end) / 2;
@@ -74,8 +67,9 @@ namespace TilerUtils {
 
             // If the absolute distance between the query and the root is smaller than the best distance,
             if (distSplit < dist) {
+                unsigned outMin;
                 // Probe for the nodes that are at the other side of the root
-                unsigned outMin = traverseNearestNeighbor(query, p + 1, end, dimension + 1);
+                outMin = traverseNearestNeighbor(query, p + 1, end, dimension + 1);
 
                 // Choose what is closer, the best node on the other side or the root/same-side
                 best = closestPoint(query, outMin, best);
@@ -96,13 +90,16 @@ namespace TilerUtils {
     bool RGBATree::smallerByDim(const unsigned& first,
         const unsigned& second, unsigned char curDim) const
     {
-        return IntToChar(first, curDim) < IntToChar(second, curDim);
+        unsigned char a = IntToChar(first, curDim);
+        unsigned char b = IntToChar(second, curDim);
+        if (a != b) return a < b;
+        return first < second;
     }
 
     /**
      * This function splits the trees[start..end] subarray at position start k
      */
-    void RGBATree::quickSelect(unsigned start, unsigned end, unsigned k, unsigned char d)
+    void RGBATree::quickSelect(int start, int end, int k, unsigned char d)
     {
         if (start < end) {
             int pivot = partition(start, end, d);
@@ -120,7 +117,7 @@ namespace TilerUtils {
      * It returns the index of the pivot in the updated vector.
      * You will likely need to modify and complete this code.
      */
-    unsigned RGBATree::partition(unsigned lo, unsigned hi, unsigned char d)
+    unsigned RGBATree::partition(int lo, int hi, unsigned char d)
     {
         int p = lo;
         int pValue = IntToChar(tree[p], d);
@@ -154,6 +151,6 @@ namespace TilerUtils {
         unsigned g = distToSplit(query, curr, 1);
         unsigned b = distToSplit(query, curr, 2);
         //unsigned a = distToSplit(query, curr, 3);
-        return r + g + b; //+ a;
+        return r + g + b;// + a;
     }
 }
