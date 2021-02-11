@@ -1,6 +1,6 @@
 #pragma once
 
-#define INIT_STACK_CAPACITY = 16;
+#define INIT_STACK_CAPACITY 16
 
 namespace Shameimaru {
 	template <typename T>
@@ -9,7 +9,7 @@ namespace Shameimaru {
 	public:
 		SimpleStack();
 
-		~SimpleStack() { delete[] stack; }
+		~SimpleStack() { delete[] _stack; }
 
 		bool push(const T& element);
 
@@ -23,7 +23,7 @@ namespace Shameimaru {
 
 	private:
 		bool resize(unsigned size);
-		T* stack;
+		T* _stack;
 		unsigned _size;
 		unsigned _max;
 		//bool _fixed;
