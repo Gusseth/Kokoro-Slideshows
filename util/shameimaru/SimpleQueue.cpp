@@ -17,13 +17,7 @@ template<typename T>
 T Shameimaru::SimpleQueue<T>::dequeue()
 {
 	lock_guard<mutex> lock(m);
-	return moveStack();
-}
-
-template<typename T>
-T Shameimaru::SimpleQueue<T>::moveStack()
-{
-	T out = stack2.push();
+	T out = stack2.pop();
 
 	if (stack2.empty())
 		while (!stack1.empty())

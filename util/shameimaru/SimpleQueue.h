@@ -1,7 +1,8 @@
-/*
-*	This is designed to be thread-safe. Use this instead of std::queue.
+﻿/*
+*	This is designed to be thread-safe. 
+*	Use this instead of std::queue to save yourself from (some) segfaults.
 * 
-*	Thank you.
+*	ありがとうございます。
 */
 
 
@@ -27,7 +28,6 @@ namespace Shameimaru {
 		//unsigned size() { return !_size; }
 
 	private:
-		T moveStack();
 
 		SimpleStack<T> stack1;
 		SimpleStack<T> stack2;
