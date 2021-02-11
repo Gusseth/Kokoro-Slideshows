@@ -18,7 +18,7 @@ namespace TilerUtils {
 		PNG AverageTiler(PNG& target);
 		PNG ExpandTiler(PNG& target);
 
-		map<unsigned, PNG> BuildTile(fs::path path, unsigned tileSize);
+		map<unsigned, PNG> BuildTile(fs::path path, unsigned tilesize);
 	private:
 		unsigned tileSize;
 		map<unsigned, PNG> tiles;

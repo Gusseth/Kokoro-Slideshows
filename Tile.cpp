@@ -40,7 +40,7 @@ namespace TilerUtils {
         return image;
     }
 
-    map<unsigned, PNG> Tiler::BuildTile(fs::path path, unsigned tileSize)
+    map<unsigned, PNG> Tiler::BuildTile(fs::path path, unsigned tilesize)
     {
         map<unsigned, PNG> tilemap;
         for (const auto& tileFile : fs::directory_iterator(path)) {
