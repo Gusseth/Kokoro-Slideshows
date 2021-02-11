@@ -97,7 +97,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(TargetDir)util\ffmpeg\avcodec.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>avcodec.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -118,7 +118,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(TargetDir)util\ffmpeg\avcodec.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>avcodec.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -135,7 +135,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(TargetDir)util\ffmpeg\avcodec.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>avcodec.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -156,7 +156,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(TargetDir)util\ffmpeg\avcodec.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>avcodec.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -165,12 +165,22 @@
     <ClCompile Include="RGBATree.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="util\lodepng\lodepng.cpp" />
+    <ClCompile Include="util\shameimaru\Shameimaru.cpp" />
+    <ClCompile Include="util\shameimaru\SimpleQueue.cpp" />
+    <ClCompile Include="util\shameimaru\SimpleStack.cpp" />
+    <ClCompile Include="util\shameimaru\SimpleVector.cpp" />
+    <ClCompile Include="util\shameimaru\ThreadPool.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PNG.h" />
     <ClInclude Include="RGBATree.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="util\lodepng\lodepng.h" />
+    <ClInclude Include="util\shameimaru\Shameimaru.h" />
+    <ClInclude Include="util\shameimaru\SimpleQueue.h" />
+    <ClInclude Include="util\shameimaru\SimpleStack.h" />
+    <ClInclude Include="util\shameimaru\SimpleVector.h" />
+    <ClInclude Include="util\shameimaru\ThreadPool.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
