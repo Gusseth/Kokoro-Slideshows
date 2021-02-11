@@ -11,7 +11,8 @@ namespace PNGUtil {
     }
 
     PNG::PNG(PNG const& toCopy) {
-        *this = toCopy;
+        image = NULL;
+        copy(toCopy);
     }
 
     PNG::~PNG()
@@ -71,15 +72,10 @@ namespace PNGUtil {
         return (error == 0);
     }
 
-    void PNG::operator=(const PNG& other)
+    PNG const& PNG::operator=(PNG const& other)
     {
-        delete[] image;
-        _width = other._width;
-        _height = other._height;
-        image = new unsigned[_width * _height];
-        for (int i = 0; i < _width * _height; i++) {
-            image[i] = other.image[i];
-        }
+        if (this != &other) { copy(other); }
+        return *this;
     }
 
     bool PNG::operator==(const PNG& other) const {
@@ -94,6 +90,17 @@ namespace PNGUtil {
         }
         return true;
     }
+    void PNG::copy(const PNG& other)
+    {
+        delete[] image;
+        _width = other._width;
+        _height = other._height;
+        image = new unsigned[_width * _height];
+        for (unsigned i = 0; i < _width * _height; i++) {
+            image[i] = other.image[i];
+        }
+    }
+
     unsigned CharToInt(unsigned char r, unsigned char g, unsigned char b, unsigned char a)
     {
         return	r << 24		// r
@@ -112,7 +119,7 @@ namespace PNGUtil {
         case 2:	// b
             return (integer & 0x0000FF00) >> 8;
         default:// a
-            return integer & 0x000000FF;
+            return (unsigned char)integer;
         }
     }
     unsigned GetAveragePixel(PNG& image)

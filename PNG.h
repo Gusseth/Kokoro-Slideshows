@@ -76,10 +76,12 @@ namespace PNGUtil {
 		/// <returns>True if successful.</returns>
 		bool WriteFile(fs::path path);
 
-		void operator=(const PNG& other);
+		PNG const& operator= (PNG const& other);
 		bool operator==(const PNG& other) const;
 
 	private:
+		void copy(const PNG & other);
+
 		unsigned* image;		// Image data as an array of unsigned integers.
 		unsigned _width;		// Width of the image.
 		unsigned _height;		// Height of the image.
