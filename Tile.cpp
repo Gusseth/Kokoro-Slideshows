@@ -45,7 +45,7 @@ namespace TilerUtils {
         map<unsigned, PNG> tilemap;
         for (const auto& tileFile : fs::directory_iterator(path)) {
             PNG t(tileFile.path());
-            tilemap.insert({ GetAveragePixel(t),t });
+            tilemap.insert({ GetAveragePixel(t, tilesize),t });
         }
 
         tiles = tilemap;
