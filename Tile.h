@@ -13,13 +13,15 @@ namespace TilerUtils {
 	{
 	public:
 		Tiler(unsigned tilesize) { tileSize = tilesize; };
+		Tiler(fs::path path, unsigned tilesize) { tileSize = tilesize; BuildTile(path, tilesize); };
 
-		PNG& AverageTiler(PNG& target);
-		PNG& ExpandTiler(PNG& target);
+		PNG AverageTiler(PNG& target);
+		PNG ExpandTiler(PNG& target);
 
 		map<unsigned, PNG> BuildTile(fs::path path, unsigned tileSize);
 	private:
 		unsigned tileSize;
+		map<unsigned, PNG> tiles;
 		RGBATree tree;
 	};
 }
