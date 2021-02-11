@@ -15,7 +15,7 @@
 
 # Reference Code from CS221
 .cs221/
-.test/
+util/ffmpeg
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -355,3 +355,4 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+/packages.config
