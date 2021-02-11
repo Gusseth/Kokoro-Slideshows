@@ -25,3 +25,10 @@ T Shameimaru::SimpleQueue<T>::dequeue()
 
 	return out;
 }
+
+template<typename T>
+bool Shameimaru::SimpleQueue<T>::empty() const
+{
+	lock_guard<mutex> lock(m);
+	return !queued;
+}
