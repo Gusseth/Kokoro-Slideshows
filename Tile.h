@@ -1,8 +1,10 @@
 #pragma once
 #include <map>
+#include <mutex>
 #include <filesystem>
 #include "PNG.h"
 #include "RGBATree.h"
+#include "util/shameimaru/ThreadPool.h"
 
 namespace fs = std::filesystem;
 using namespace std;
@@ -23,6 +25,7 @@ namespace TilerUtils {
 		unsigned tileSize;
 		map<unsigned, PNG> tiles;
 		RGBATree tree;
+		mutex m;
 	};
 }
 
