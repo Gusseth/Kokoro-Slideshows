@@ -35,7 +35,6 @@ namespace TilerUtils {
                         for (unsigned x1 = 0; x1 < tileSize; x1++) {
                             for (unsigned y1 = 0; y1 < tileSize; y1++) {
                                     unsigned* currentPixel = image.GetPixel(x * tileSize + x1, y * tileSize + y1);
-                                    if (x == 256) printf("(%d, %d)\n", x, y);
                                     *currentPixel = 0; 
                             }
                         }
