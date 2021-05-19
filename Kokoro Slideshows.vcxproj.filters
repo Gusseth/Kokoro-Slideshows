@@ -48,19 +48,19 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="util\shameimaru\SimpleQueue.cpp">
-      <Filter>Source Files\shameimaru\Containers</Filter>
-    </ClCompile>
     <ClCompile Include="util\shameimaru\SimpleVector.cpp">
       <Filter>Source Files\shameimaru\Containers</Filter>
     </ClCompile>
-    <ClCompile Include="util\shameimaru\SimpleStack.cpp">
-      <Filter>Source Files\shameimaru\Containers</Filter>
-    </ClCompile>
-    <ClCompile Include="util\shameimaru\ThreadPool.cpp">
+    <ClCompile Include="util\shameimaru\Shameimaru.cpp">
       <Filter>Source Files\shameimaru</Filter>
     </ClCompile>
-    <ClCompile Include="util\shameimaru\Shameimaru.cpp">
+    <ClCompile Include="SimpleQueue.cpp">
+      <Filter>Source Files\shameimaru\Containers</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleStack.cpp">
+      <Filter>Source Files\shameimaru\Containers</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadPool.cpp">
       <Filter>Source Files\shameimaru</Filter>
     </ClCompile>
   </ItemGroup>
@@ -77,20 +77,20 @@
     <ClInclude Include="util\lodepng\lodepng.h">
       <Filter>Header Files\lodepng</Filter>
     </ClInclude>
-    <ClInclude Include="util\shameimaru\SimpleQueue.h">
-      <Filter>Header Files\shameimaru\Containers</Filter>
-    </ClInclude>
     <ClInclude Include="util\shameimaru\SimpleVector.h">
-      <Filter>Header Files\shameimaru\Containers</Filter>
-    </ClInclude>
-    <ClInclude Include="util\shameimaru\SimpleStack.h">
       <Filter>Header Files\shameimaru\Containers</Filter>
     </ClInclude>
     <ClInclude Include="util\shameimaru\Shameimaru.h">
       <Filter>Header Files\shameimaru</Filter>
     </ClInclude>
-    <ClInclude Include="util\shameimaru\ThreadPool.h">
-      <Filter>Header Files\shameimaru</Filter>
+    <ClInclude Include="ThreadPool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleQueue.h">
+      <Filter>Header Files\shameimaru\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleStack.h">
+      <Filter>Header Files\shameimaru\Containers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

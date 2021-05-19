@@ -30,7 +30,7 @@ namespace Shameimaru {
 		bool empty() const;
 
 	private:
-		unsigned queued;
+		unsigned queued = 0;
 		SimpleStack<T> stack1;
 		SimpleStack<T> stack2;
 		//unsigned _size;

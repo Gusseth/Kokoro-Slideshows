@@ -4,7 +4,7 @@
 #include <filesystem>
 #include "PNG.h"
 #include "RGBATree.h"
-#include "util/shameimaru/ThreadPool.h"
+#include "ThreadPool.h"
 
 namespace fs = std::filesystem;
 using namespace std;
