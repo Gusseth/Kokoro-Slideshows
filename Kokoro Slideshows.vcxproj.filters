@@ -54,13 +54,13 @@
     <ClCompile Include="util\shameimaru\Shameimaru.cpp">
       <Filter>Source Files\shameimaru</Filter>
     </ClCompile>
-    <ClCompile Include="SimpleQueue.cpp">
+    <ClCompile Include="util\shameimaru\SimpleQueue.cpp">
       <Filter>Source Files\shameimaru\Containers</Filter>
     </ClCompile>
-    <ClCompile Include="SimpleStack.cpp">
+    <ClCompile Include="util\shameimaru\SimpleStack.cpp">
       <Filter>Source Files\shameimaru\Containers</Filter>
     </ClCompile>
-    <ClCompile Include="ThreadPool.cpp">
+    <ClCompile Include="util\shameimaru\ThreadPool.cpp">
       <Filter>Source Files\shameimaru</Filter>
     </ClCompile>
   </ItemGroup>
@@ -83,14 +83,14 @@
     <ClInclude Include="util\shameimaru\Shameimaru.h">
       <Filter>Header Files\shameimaru</Filter>
     </ClInclude>
-    <ClInclude Include="ThreadPool.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SimpleQueue.h">
+    <ClInclude Include="util\shameimaru\SimpleQueue.h">
       <Filter>Header Files\shameimaru\Containers</Filter>
     </ClInclude>
-    <ClInclude Include="SimpleStack.h">
+    <ClInclude Include="util\shameimaru\SimpleStack.h">
       <Filter>Header Files\shameimaru\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="util\shameimaru\ThreadPool.h">
+      <Filter>Header Files\shameimaru</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
